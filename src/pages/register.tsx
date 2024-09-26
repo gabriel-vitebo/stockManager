@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Buttons } from "../components/Buttons";
 import { TextInput } from "../components/TextInput";
 
-export function Login() {
+export function Register() {
   const navigate = useNavigate()
 
   function handleNavigate() {
@@ -15,6 +15,11 @@ export function Login() {
         <h1 className="text-4xl font-bold text-primaryGreen mb-6">StockManager</h1>
         <div className="w-[90%] flex flex-col gap-5 justify-center items-center">
           <TextInput
+            placeholder="Nome"
+            hasIcon={false}
+            type="text"
+          />
+          <TextInput
             placeholder="Email"
             hasIcon={false}
             type="email"
@@ -26,8 +31,8 @@ export function Login() {
           />
         </div>
         <div className="w-[90%] flex gap-2 mt-5">
-          <Buttons value="Entrar" onClick={() => handleNavigate()} />
           <Buttons value="Cadastrar" onClick={() => handleNavigate()} />
+          <Buttons value="Voltar" onClick={() => handleNavigate()} />
         </div>
       </div>
     </div>

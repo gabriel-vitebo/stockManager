@@ -7,7 +7,7 @@ export function Buttons({ value, onClick }: ButtonsProps) {
   return (
     <button
       className="
-        w-full 
+        w-full
         border-none 
         rounded-md 
         py-2

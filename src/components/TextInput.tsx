@@ -6,15 +6,15 @@ interface TextInputProps {
 
 export function TextInput({ placeholder, hasIcon, type }: TextInputProps) {
   return (
-    <div className={`w-full flex items-center bg-gray-100 rounded-lg ${hasIcon ? 'pr-0' : 'pr-2'}`}>
+    <div className={`w-full flex items-center bg-gray-100 rounded-lg `}>
       <input
         type={type}
         placeholder={placeholder}
-        className={`flex-1 border-none outline-none py-2 px-3 placeholder:text-gray-950 bg-gray-100 rounded-l-lg ${hasIcon ? 'rounded-r-none' : 'rounded-lg'}`}
+        className={`flex-1 border-none outline-none py-2 pl-3 placeholder:text-gray-950 bg-gray-100 rounded-l-lg ${hasIcon ? 'rounded-r-none' : 'rounded-lg'}`}
       />
       {hasIcon && (
         <button className="flex items-center justify-center p-2 bg-gray-100 rounded-r-lg">
-          <p>VOU BOTAR UM ICONE AQUI</p>
+          <p></p>
         </button>
       )}
     </div>
