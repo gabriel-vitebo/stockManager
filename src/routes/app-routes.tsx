@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
-import { Register } from '../pages/register'
+import { Login } from '../pages/login'
 
 export function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Register />} />
+      <Route path="/" element={<Login />} />
     </Routes>
   )
 }
