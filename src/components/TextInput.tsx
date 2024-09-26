@@ -10,7 +10,7 @@ export function TextInput({ placeholder, hasIcon, type }: TextInputProps) {
       <input
         type={type}
         placeholder={placeholder}
-        className={`flex-1 border-none outline-none py-2 px-3 text-base text-gray-900 bg-gray-100 rounded-l-lg ${hasIcon ? 'rounded-r-none' : ''}`}
+        className={`flex-1 border-none outline-none py-2 px-3 placeholder:text-gray-950 bg-gray-100 rounded-l-lg ${hasIcon ? 'rounded-r-none' : 'rounded-lg'}`}
       />
       {hasIcon && (
         <button className="flex items-center justify-center p-2 bg-gray-100 rounded-r-lg">
