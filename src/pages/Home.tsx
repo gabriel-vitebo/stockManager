@@ -1,6 +1,8 @@
+import { Card } from "../components/Card";
 import { Header } from "../components/Header";
 import { OptionsInput } from "../components/OptionsInput";
 import { TextInput } from "../components/TextInput";
+import { fakeProducts } from '../utils/fakeProducts'
 
 export function Home() {
   return (
@@ -14,6 +16,11 @@ export function Home() {
           <div>
             <OptionsInput />
           </div>
+          {
+            fakeProducts.map((product) => (
+              <Card title={product.title} amount={product.amount} price={product.price} />
+            ))
+          }
         </main>
       </div>
     </>
