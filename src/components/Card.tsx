@@ -2,11 +2,12 @@ interface CardProps {
   title: string
   price: string
   amount: number
+  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
-export function Card({ title, price, amount }: CardProps) {
+export function Card({ title, price, amount, onClick }: CardProps) {
   return (
-    <div className="rounded-2xl bg-primaryBgDark flex flex-col justify-between pl-5">
+    <div className="rounded-2xl bg-primaryBgDark flex flex-col justify-between pl-5" onClick={onClick}>
       <div className="flex flex-row items-center gap-1 mt-2">
         <h2 className="text-colorDefaultDark text-xl font-semibold">{title}</h2>
         <span className="text-secondaryGreen text-xs items-center">(Em Estoque)</span>

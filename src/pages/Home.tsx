@@ -2,9 +2,16 @@ import { Card } from "../components/Card";
 import { Header } from "../components/Header";
 import { OptionsInput } from "../components/OptionsInput";
 import { TextInput } from "../components/TextInput";
+import { useNavigate } from 'react-router-dom';
 import { fakeProducts } from '../utils/fakeProducts'
 
 export function Home() {
+  const navigate = useNavigate()
+
+    function handleDetails(id: string) {
+        navigate(`/details/${id}`)
+    }
+
   return (
     <>
       <Header />
@@ -18,7 +25,12 @@ export function Home() {
           </div>
           {
             fakeProducts.map((product) => (
-              <Card title={product.title} amount={product.amount} price={product.price} />
+              <Card
+                  title={product.title}
+                  amount={product.amount}
+                  price={product.price}
+                  onClick={() => handleDetails(product.id)}
+              />
             ))
           }
         </main>
