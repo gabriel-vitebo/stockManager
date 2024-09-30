@@ -31,8 +31,8 @@ export function Register() {
           />
         </div>
         <div className="w-[90%] flex gap-2 mt-5">
-          <Buttons value="Cadastrar" onClick={() => handleNavigate()} />
-          <Buttons value="Voltar" onClick={() => handleNavigate()} />
+          <Buttons value="Cadastrar" onClick={() => handleNavigate()}  />
+          <Buttons value="Voltar" onClick={() => handleNavigate()} typeBg="secondaryButtonBg" />
         </div>
       </div>
     </div>

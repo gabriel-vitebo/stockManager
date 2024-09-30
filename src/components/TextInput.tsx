@@ -3,11 +3,11 @@ import { SearchIcon } from "./Icons/SearchIcon";
 interface TextInputProps {
   placeholder?: string;
   hasIcon: boolean;
-  readonly: boolean
+  readonly?: boolean
   type: string;
 }
 
-export function TextInput({ placeholder, hasIcon, type, readonly }: TextInputProps) {
+export function TextInput({ placeholder, hasIcon, type, readonly = false }: TextInputProps) {
   return (
     <div className={`w-full flex items-center  rounded-lg `}>
       <input

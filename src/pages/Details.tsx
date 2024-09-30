@@ -6,6 +6,7 @@ import {fakeProducts} from "../utils/fakeProducts.ts";
 import {TextInput} from "../components/TextInput.tsx";
 import {EditIcon} from "../components/Icons/EditIcon.tsx";
 import {TextAreaInput} from "../components/TextAreaInput.tsx";
+import {Buttons} from "../components/Buttons.tsx";
 
 interface ProductDetailsProps {
     title: string,
@@ -51,6 +52,7 @@ export function Details() {
                         </div>
                         <span className='text-base text-secondaryGreen'>(Em Estoque)</span>
                     </div>
+
                     <div className=" w-full max-w-screen-sm flex items-center flex-col gap-3 justify-center">
                         <p className='text-2xl text-colorDefaultDark'>Preço:</p>
                         <TextInput type='text' hasIcon={false} placeholder={`R$${product.price}`} readonly={true}/>
@@ -62,6 +64,7 @@ export function Details() {
                     <div className={'w-full max-w-screen-sm mt-3.5'}>
                         <TextAreaInput value={product.description}  readonly={true}/>
                     </div>
+                    <Buttons value={'Excluir'} typeBg='error'/>
                 </main>
             </div>
     </>

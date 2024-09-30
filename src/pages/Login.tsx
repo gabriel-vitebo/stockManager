@@ -27,7 +27,7 @@ export function Login() {
         </div>
         <div className="w-[90%] flex gap-2 mt-5">
           <Buttons value="Entrar" onClick={() => handleNavigate()} />
-          <Buttons value="Cadastrar" onClick={() => handleNavigate()} />
+          <Buttons value="Cadastrar" typeBg={'secondaryButtonBg'} onClick={() => handleNavigate()} />
         </div>
       </div>
     </div>
