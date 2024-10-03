@@ -18,11 +18,13 @@ export function Login() {
             placeholder="Email"
             hasIcon={false}
             type="email"
+            readonly={false}
           />
           <TextInput
             placeholder="Senha"
             hasIcon={false}
             type="password"
+            readonly={false}
           />
         </div>
         <div className="w-[90%] flex gap-2 mt-5">
