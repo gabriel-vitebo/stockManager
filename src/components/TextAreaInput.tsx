@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
 
 interface TextAreaInputProps {
-    value: string;
+    placeholder?: string;
     readonly: boolean;
 }
 
-export function TextAreaInput({ value, readonly }: TextAreaInputProps): JSX.Element {
+export function TextAreaInput({ placeholder, readonly }: TextAreaInputProps): JSX.Element {
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
     useEffect(() => {
@@ -14,13 +14,14 @@ export function TextAreaInput({ value, readonly }: TextAreaInputProps): JSX.Elem
             textArea.style.height = 'auto';
             textArea.style.height = `${textArea.scrollHeight}px`;
         }
-    }, [value, readonly]);
+    }, [placeholder, readonly]);
+
 
     return (
         <div className='w-full max-w-screen-sm flex items-center rounded-lg'>
             <textarea
                 ref={textAreaRef}
-                value={value}
+                placeholder={placeholder}
                 readOnly={readonly}
                 className='flex-1 border-none outline-none py-2 pl-3 placeholder:text-primaryBgDark bg-colorDefaultDark rounded-lg max-h-96 min-h-36 resize-none'
                 style={{ height: readonly ? 'auto' : 'min-h-36' }}

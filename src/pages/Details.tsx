@@ -1,6 +1,6 @@
 import {Header} from "../components/Header.tsx";
 
-import { useParams } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {fakeProducts} from "../utils/fakeProducts.ts";
 import {TextInput} from "../components/TextInput.tsx";
@@ -9,6 +9,7 @@ import {TextAreaInput} from "../components/TextAreaInput.tsx";
 import {Buttons} from "../components/Buttons.tsx";
 
 interface ProductDetailsProps {
+    id: string,
     title: string,
     price: string,
     amount: number,
@@ -17,14 +18,20 @@ interface ProductDetailsProps {
 
 export function Details() {
     const params = useParams();
+    const navigate = useNavigate()
 
     const [product, setProduct] = useState<ProductDetailsProps>({
+        id: '',
         title: '',
         price: '',
         amount: 0,
         description: ''
     });
-    console.log(product)
+
+
+    function handleEdit(id: string) {
+        navigate(`/edit/${id}`)
+    }
 
     useEffect(() => {
       try {
@@ -38,7 +45,6 @@ export function Details() {
       }
     }, [])
 
-
     return (
     <>
         <Header />
@@ -48,7 +54,7 @@ export function Details() {
                     <div className="flex items-center flex-col">
                         <div className='flex items-center gap-2 justify-center items-center'>
                             <h1 className='text-3xl font-semibold text-colorDefaultDark'>{product.title}</h1>
-                            <EditIcon/>
+                            <EditIcon onClick={() => handleEdit(product.id)} />
                         </div>
                         <span className='text-base text-secondaryGreen'>(Em Estoque)</span>
                     </div>
@@ -62,7 +68,7 @@ export function Details() {
                         <TextInput type='text' hasIcon={false} placeholder={product.amount.toString()} readonly={true}/>
                     </div>
                     <div className={'w-full max-w-screen-sm mt-3.5'}>
-                        <TextAreaInput value={product.description}  readonly={true}/>
+                        <TextAreaInput placeholder={product.description} readonly={true}/>
                     </div>
                     <Buttons value={'Excluir'} typeBg='error'/>
                 </main>
