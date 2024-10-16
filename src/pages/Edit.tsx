@@ -1,6 +1,6 @@
 import {Header} from "../components/Header.tsx";
 
-import { useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {fakeProducts} from "../utils/fakeProducts.ts";
 import {TextInput} from "../components/TextInput.tsx";
