@@ -4,6 +4,7 @@ import { OptionsInput } from "../components/OptionsInput";
 import { TextInput } from "../components/TextInput";
 import { useNavigate } from 'react-router-dom';
 import { fakeProducts } from '../utils/fakeProducts'
+import {Footer} from "../components/Footer.tsx";
 
 export function Home() {
   const navigate = useNavigate()
@@ -13,28 +14,31 @@ export function Home() {
     }
 
   return (
-    <>
+    <div className='flex flex-col min-h-screen'>
       <Header />
-      <div className="flex items-center flex-col py-5 w-full">
-        <main className="w-11/12 h-[500px] overflow-y-auto flex flex-col gap-3 p-3 bg-secondaryBgDark rounded-xl">
-          <div className=" my-3.5">
+      <div className="flex flex-col items-center flex-1 w-full py-5">
+        <main className="w-11/12 flex-1 overflow-y-auto flex flex-col gap-3 p-3 bg-secondaryBgDark rounded-xl">
+          <div className="my-3.5">
             <TextInput type="text" placeholder="Pesquisar Produto" hasIcon={true} readonly={false} />
           </div>
           <div>
             <OptionsInput />
           </div>
-          {
-            fakeProducts.map((product) => (
-              <Card
-                  title={product.title}
-                  amount={product.amount}
-                  price={product.price}
-                  onClick={() => handleDetails(product.id)}
-              />
-            ))
-          }
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 overflow-y-auto max-h-[calc(90vh-200px)]">
+              {
+                fakeProducts.map((product) => (
+                  <Card
+                      title={product.title}
+                      amount={product.amount}
+                      price={product.price}
+                      onClick={() => handleDetails(product.id)}
+                  />
+                ))
+              }
+            </div>
         </main>
       </div>
-    </>
+      <Footer />
+    </div>
   )
 }
