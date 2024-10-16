@@ -7,6 +7,7 @@ import {TextInput} from "../components/TextInput.tsx";
 import {EditIcon} from "../components/Icons/EditIcon.tsx";
 import {TextAreaInput} from "../components/TextAreaInput.tsx";
 import {Buttons} from "../components/Buttons.tsx";
+import {Footer} from "../components/Footer.tsx";
 
 interface ProductDetailsProps {
     id: string,
@@ -46,11 +47,11 @@ export function Details() {
     }, [])
 
     return (
-    <>
+    <div className='flex flex-col min-h-screen'>
         <Header />
-            <div className="flex items-center flex-col py-5 w-full">
+            <div className="flex flex-1 flex-col items-center w-full py-5">
                 <main
-                    className="w-11/12 h-[700px] overflow-y-auto flex items-center flex-col gap-3 p-3 bg-secondaryBgDark rounded-xl">
+                    className="w-11/12 flex-1 overflow-y-auto flex items-center flex-col gap-3 p-3 bg-secondaryBgDark rounded-xl">
                     <div className="flex items-center flex-col">
                         <div className='flex items-center gap-2 justify-center items-center'>
                             <h1 className='text-3xl font-semibold text-colorDefaultDark'>{product.title}</h1>
@@ -73,6 +74,7 @@ export function Details() {
                     <Buttons value={'Excluir'} typeBg='error'/>
                 </main>
             </div>
-    </>
+        <Footer />
+    </div>
     )
 }

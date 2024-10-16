@@ -6,6 +6,7 @@ import {fakeProducts} from "../utils/fakeProducts.ts";
 import {TextInput} from "../components/TextInput.tsx";
 import {TextAreaInput} from "../components/TextAreaInput.tsx";
 import {Buttons} from "../components/Buttons.tsx";
+import {Footer} from "../components/Footer.tsx";
 
 interface ProductEditProps {
     title: string,
@@ -38,11 +39,11 @@ export function Edit() {
 
 
     return (
-        <>
+        <div className='flex flex-col min-h-screen'>
             <Header />
-            <div className="flex items-center flex-col py-5 w-full">
+            <div className="flex flex-1 flex-col items-center w-full py-5">
                 <main
-                    className="w-11/12 h-[700px] overflow-y-auto flex items-center flex-col gap-3 p-3 bg-secondaryBgDark rounded-xl">
+                    className="w-11/12 flex-1 overflow-y-auto flex items-center flex-col gap-3 p-3 bg-secondaryBgDark rounded-xl">
                     <div className=" w-full max-w-screen-sm flex items-center flex-col gap-3 justify-center">
                         <p className='text-2xl text-colorDefaultDark'>Titulo:</p>
                         <TextInput type='text' hasIcon={false} placeholder={product.title} readonly={false}/>
@@ -61,6 +62,7 @@ export function Edit() {
                     <Buttons value={'Atualizar'} typeBg='secondaryGreen'/>
                 </main>
             </div>
-        </>
+            <Footer />
+        </div>
     )
 }
