@@ -5,23 +5,44 @@ import { TextInput } from "../components/TextInput";
 import { useNavigate } from 'react-router-dom';
 import { fakeProducts } from '../utils/fakeProducts'
 import {Footer} from "../components/Footer.tsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export function Home() {
   const [search, setSearch] = useState("");
+  const [inStock, setInStock] = useState(true);
+  const [filteredProducts, setFilteredProducts] = useState(fakeProducts);
   const navigate = useNavigate()
 
     function handleDetails(id: string) {
         navigate(`/details/${id}`)
     }
 
+    function handleStock() {
+      const test = filteredProducts.map((product) => { 
+        if(product.amount <= 0) {
+          setInStock(false)
+        }
+      })
+
+      console.log(test)
+    }
+
     function handleSearchChange(event: React.ChangeEvent<HTMLInputElement>) {
         setSearch(event.target.value);
     }
 
-   const filteredProducts = fakeProducts.filter((product) =>
-        product.title.toLowerCase().includes(search.toLowerCase())
-    );
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setFilteredProducts((prevProducts) =>
+          prevProducts.map((product) => ({
+            ...product,
+            amount: product.amount > 0 ? product.amount - 1 : 0,
+          }))
+        );
+      }, 5000);
+  
+      return () => clearInterval(interval);
+    }, []);
 
   return (
     <div className='flex flex-col min-h-screen'>
@@ -48,7 +69,9 @@ export function Home() {
                         title={product.title}
                         amount={product.amount}
                         price={product.price}
+                        status={inStock ? 'Em Estoque' : 'Fora de Estoque'}
                         onClick={() => handleDetails(product.id)}
+                        onChange={handleStock}
                     />
                 ))}
             </div>
