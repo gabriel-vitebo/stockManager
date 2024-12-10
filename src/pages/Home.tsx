@@ -14,11 +14,13 @@ interface ProductProps {
   price: string;
   initialAmount: number;
   currentQuantity: number;
+  status: string
 }
 
 export function Home() {
   const [search, setSearch] = useState("");
   const [products, setProducts] = useState<ProductProps[]>([])
+  const [filterOption, setFilterOption] = useState('all');
 
   const navigate = useNavigate()
 
@@ -30,9 +32,19 @@ export function Home() {
     setSearch(event.target.value);
   }
 
-  const filteredProducts = products.filter((product) =>
-    product.title.toLowerCase().includes(search.toLowerCase())
-  );
+  function handleFilterChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    setFilterOption(event.target.value);
+  }
+
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch = product.title.toLowerCase().includes(search.toLowerCase());
+    const matchesFilter =
+      filterOption === "all" ||
+      (filterOption === "IN_STOCK" && product.status === "IN_STOCK") ||
+      (filterOption === "LOW_STOCK" && product.status === "LOW_STOCK") ||
+      (filterOption === "OUT_OF_STOCK" && product.status === "OUT_OF_STOCK");
+    return matchesSearch && matchesFilter;
+  });
 
   useEffect(() => {
     async function fetchData() {
@@ -52,6 +64,8 @@ export function Home() {
     fetchData();
   }, []);
 
+  console.log(products)
+
   return (
     <div className='flex flex-col min-h-screen'>
       <Header />
@@ -68,15 +82,22 @@ export function Home() {
             />
           </div>
           <div>
-            <OptionsInput />
+            <OptionsInput onChange={handleFilterChange} />
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 overflow-y-auto max-h-[calc(90vh-200px)]">
             {filteredProducts.map((product) => (
               <Card
                 key={product.id}
                 title={product.title}
-                amount={product.initialAmount}
+                amount={product.currentQuantity}
                 price={product.price}
+                status={
+                  product.status === 'LOW_STOCK' ? 'Baixo estoque' :
+                    product.status === 'OUT_OF_STOCK' ? 'Fora de Estoque' :
+                      product.status === 'IN_STOCK' ? 'Em Estoque' :
+                        'Em Estoque' // Valor padrão se não corresponder a nenhum dos anteriores
+                }
+                onChange={() => { }}
                 onClick={() => handleDetails(product.id)}
               />
             ))}

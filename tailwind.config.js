@@ -19,5 +19,7 @@ export default {
       colorDefaultDark: '#D3D3D3'
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 }
