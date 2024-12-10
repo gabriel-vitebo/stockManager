@@ -4,9 +4,9 @@ interface TextInputProps {
   placeholder?: string;
   hasIcon: boolean;
   readonly?: boolean
-  type: string;
-  value: string
-  onChange: React.ChangeEventHandler<HTMLInputElement>
+  type?: string;
+  value?: string
+  onChange?: React.ChangeEventHandler<HTMLInputElement>
 }
 
 export function TextInput({ placeholder, hasIcon, type, readonly = false, value, onChange }: TextInputProps) {

@@ -7,6 +7,10 @@ export function BarOptions() {
         navigate('/')
     }
 
+    function handleRegisterProduct() {
+        navigate('/newproduct')
+    }
+
     return (
         <div className='w-52 max-h-[calc(90vh-200px) bg-secondaryBgDark rounded-md shadow-lg p-4 border-2 border-primaryButtonBg'>
             <ul className='flex flex-col space-y-3'>
@@ -19,6 +23,7 @@ export function BarOptions() {
                 </li>
                 <li>
                     <button
+                        onClick={handleRegisterProduct}
                         className='w-full py-1 text-left px-1 text-colorDefaultDark border-b-2 hover:bg-primaryGreenHover transition-colors'>
                         Registrar Produto
                     </button>
