@@ -4,12 +4,13 @@ interface CardProps {
   title: string
   price: string
   amount: number
+  currentAmount: number
   status: 'Em Estoque' | 'Baixo estoque' | 'Fora de Estoque'
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
   onChange: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
-export function Card({ title, price, amount, status, onClick }: CardProps) {
+export function Card({ title, price, amount, currentAmount, status, onClick }: CardProps) {
   const statusColor = (status: string) => {
     switch (status) {
       case 'Em Estoque':
@@ -37,6 +38,10 @@ export function Card({ title, price, amount, status, onClick }: CardProps) {
         <div className="flex gap-1 items-center">
           <p className="text-colorDefaultDark">Quantidade: </p>
           <p className="text-secondaryGreen">{amount}</p>
+        </div>
+        <div className="flex gap-1 items-center ml-5">
+          <p className="text-colorDefaultDark">Estoque: </p>
+          <p className="text-secondaryGreen">{currentAmount}</p>
         </div>
       </div>
     </div>

@@ -10,7 +10,6 @@ import { api } from "../services/api.ts";
 interface ProductProps {
   id: string;
   title: string;
-  amount: number;
   price: string;
   initialAmount: number;
   currentQuantity: number;
@@ -89,7 +88,8 @@ export function Home() {
               <Card
                 key={product.id}
                 title={product.title}
-                amount={product.currentQuantity}
+                amount={product.initialAmount}
+                currentAmount={product.currentQuantity}
                 price={product.price}
                 status={
                   product.status === 'LOW_STOCK' ? 'Baixo estoque' :
