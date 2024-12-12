@@ -95,7 +95,7 @@ export function Home() {
                   product.status === 'LOW_STOCK' ? 'Baixo estoque' :
                     product.status === 'OUT_OF_STOCK' ? 'Fora de Estoque' :
                       product.status === 'IN_STOCK' ? 'Em Estoque' :
-                        'Em Estoque' // Valor padrão se não corresponder a nenhum dos anteriores
+                        'Em Estoque'
                 }
                 onChange={() => { }}
                 onClick={() => handleDetails(product.id)}
