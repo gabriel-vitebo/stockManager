@@ -36,6 +36,17 @@ export function Details() {
         navigate(`/edit/${id}`);
     }
 
+    async function handleDelete() {
+        const confirm = window.confirm('Tem certeza que deseja excluir este produto?');
+
+        if (!confirm) {
+            return;
+        }
+
+        await api.delete(`/products/delete/${params.id}`);
+        navigate("/");
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -109,7 +120,7 @@ export function Details() {
                             readonly
                         />
                     </div>
-                    <Buttons value="Excluir" typeBg="error" />
+                    <Buttons value="Excluir" typeBg="error" onClick={() => handleDelete()} />
                 </main>
             </div>
             <Footer />
