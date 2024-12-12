@@ -7,9 +7,10 @@ interface TextInputProps {
   type?: string;
   value?: string
   onChange?: React.ChangeEventHandler<HTMLInputElement>
+  name?: string
 }
 
-export function TextInput({ placeholder, hasIcon, type, readonly = false, value, onChange }: TextInputProps) {
+export function TextInput({ placeholder, hasIcon, type, readonly = false, value, onChange, name }: TextInputProps) {
   return (
     <div className={`w-full flex items-center  rounded-lg `}>
       <input
@@ -19,6 +20,7 @@ export function TextInput({ placeholder, hasIcon, type, readonly = false, value,
         readOnly={readonly}
         value={value}
         onChange={onChange}
+        name={name}
       />
       {hasIcon && (
         <button className="flex items-center justify-center p-2 bg-colorDefaultDark rounded-r-lg">

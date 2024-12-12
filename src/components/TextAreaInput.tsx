@@ -2,12 +2,13 @@ import { useEffect, useRef } from 'react';
 
 interface TextAreaInputProps {
     placeholder?: string;
+    name?: string;
     value: string;
     readonly: boolean;
     onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-export function TextAreaInput({ placeholder, value, readonly, onChange }: TextAreaInputProps): JSX.Element {
+export function TextAreaInput({ placeholder, value, readonly, onChange, name }: TextAreaInputProps): JSX.Element {
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
     useEffect(() => {
@@ -22,6 +23,7 @@ export function TextAreaInput({ placeholder, value, readonly, onChange }: TextAr
     return (
         <div className='w-full max-w-screen-sm flex items-center rounded-lg'>
             <textarea
+                name={name}
                 onChange={onChange}
                 ref={textAreaRef}
                 value={value}
